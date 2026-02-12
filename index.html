@@ -10,11 +10,6 @@
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-    <h1>Loading...</h1>
-</div>
-
 <header class="hero">
     <img src="anuj.jpg" alt="Anuj Kumar Gupta">
     <h1>Anuj Kumar Gupta</h1>
@@ -24,79 +19,93 @@
 
 <nav>
     <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#stats">Achievements</a>
+    <a href="#education">Education</a>
+    <a href="#technical">Technical</a>
+    <a href="#certificates">Certificates</a>
     <a href="#contact">Contact</a>
 </nav>
 
-<section id="about">
+<section id="about" class="fade">
     <h2>About Me</h2>
     <div class="card">
         <p>
-            Diploma student in Food Processing Technology.
-            Passionate about food innovation, quality control,
-            and industrial food systems.
+            I am Anuj Kumar Gupta, pursuing Diploma in Food Processing 
+            Technology at Malda Polytechnic. My goal is to become a 
+            professional Food Processing Technologist and continuously 
+            upgrade my technical knowledge and skills.
         </p>
     </div>
 </section>
 
-<section id="projects">
-    <h2>Projects</h2>
+<section id="education" class="fade">
+    <h2>Education</h2>
 
     <div class="card">
-        <h3>Orange Marmalade Preparation</h3>
-        <p>Practical preparation and preservation of orange marmalade.</p>
+        <h3>Higher Secondary (2024)</h3>
+        <p>W.B.C.H.S.E | 82.8%</p>
     </div>
 
     <div class="card">
-        <h3>Food Preservation Study</h3>
-        <p>Study of modern preservation techniques in food industry.</p>
-    </div>
-</section>
-
-<section id="stats">
-    <h2>Achievements</h2>
-
-    <div class="card">
-        <h3><span class="counter" data-target="82">0</span>%</h3>
-        <p>Higher Secondary Marks</p>
-    </div>
-
-    <div class="card">
-        <h3><span class="counter" data-target="7">0</span>.4</h3>
-        <p>Current GPA</p>
-    </div>
-
-    <div class="card">
-        <h3><span class="counter" data-target="3">0</span>+</h3>
-        <p>Certificates Earned</p>
+        <h3>Secondary (2022)</h3>
+        <p>W.B.B.S.E | 51%</p>
     </div>
 </section>
 
-<section id="contact">
+<section id="technical" class="fade">
+    <h2>Technical Qualification</h2>
+
+    <div class="card">
+        <h3>Diploma in Food Processing Technology</h3>
+        <p>Malda Polytechnic</p>
+        <p>2nd Year | GPA: 7.4</p>
+        <p>Expected Year of Completion: 2027</p>
+    </div>
+
+    <div class="card">
+        <h3>Industrial Training</h3>
+        <p>Keventer Agro Limited</p>
+        <p>Training Successfully Completed</p>
+    </div>
+</section>
+
+<section id="certificates" class="fade">
+    <h2>Certificates</h2>
+
+    <div class="card">
+        <h3>Keventer Industrial Training Certificate</h3>
+        <a href="Keventer_Certificate.pdf" class="btn" target="_blank">View Certificate</a>
+    </div>
+
+    <div class="card">
+        <h3>Computer Course Certificate</h3>
+        <a href="Computer_Course_Certificate.pdf" class="btn" target="_blank">View Certificate</a>
+    </div>
+</section>
+
+<section id="contact" class="fade">
     <h2>Contact</h2>
+
     <div class="card">
-        <p>Email: anujkumar07703@gmail.com</p>
+        <p>Email: <a href="mailto:anujkumar07703@gmail.com">anujkumar07703@gmail.com</a></p>
         <p>Mobile: 8370932986</p>
+
+        <div class="social">
+            <a href="https://www.instagram.com/the_last_real_one_07" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/a.k.gupta.905228" target="_blank">Facebook</a>
+        </div>
     </div>
 </section>
 
 <footer>
-    <p>© 2026 Anuj Kumar Gupta</p>
+    <p>© 2026 Anuj Kumar Gupta | All Rights Reserved</p>
 </footer>
 
-<!-- LOADER SCRIPT -->
-<script>
-window.addEventListener("load", function(){
-    document.getElementById("loader").style.display = "none";
-});
-</script>
-
-<!-- TYPING EFFECT -->
+<!-- TYPING ANIMATION SCRIPT -->
 <script>
 const textArray = [
 "Future Food Technologist",
-"Industrial Training Completed",
+"Diploma Student - Food Processing Technology",
+"Industrial Training Completed at Keventer",
 "Passionate About Food Innovation"
 ];
 
@@ -116,8 +125,7 @@ function typeEffect() {
 
 function eraseEffect() {
     if (charIndex > 0) {
-        typingElement.textContent =
-        textArray[textIndex].substring(0, charIndex - 1);
+        typingElement.textContent = textArray[textIndex].substring(0, charIndex - 1);
         charIndex--;
         setTimeout(eraseEffect, 40);
     } else {
@@ -132,24 +140,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-<!-- COUNTER -->
+<!-- SCROLL FADE ANIMATION -->
 <script>
-const counters = document.querySelectorAll('.counter');
+const faders = document.querySelectorAll(".fade");
 
-counters.forEach(counter => {
-    const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const increment = target / 100;
-
-        if(count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(updateCount, 20);
-        } else {
-            counter.innerText = target;
+window.addEventListener("scroll", () => {
+    faders.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+            section.classList.add("show");
         }
-    };
-    updateCount();
+    });
 });
 </script>
 
